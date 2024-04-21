@@ -46,7 +46,7 @@ class YouTubeDownloader(QWidget):
         try:
             video_url = self.link_edit.text()
             yt = YouTube(video_url, on_progress_callback=self.progress_callback)
-            video = yt.streams.get_highest_resolution()
+            video = yt.streams.get_lowest_resolution()
             save_path = QFileDialog.getExistingDirectory(self, "Select Download Folder")
             if save_path:
                 video.download(save_path)
